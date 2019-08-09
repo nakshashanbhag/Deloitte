@@ -1,0 +1,23 @@
+<html>
+<head>
+<script>
+function display()
+{
+	alert("Error");
+    	result = confirm("Are you sure you want to continue?");
+	if(result==true)
+	{
+		alert("You opted to continue.");
+		var name = prompt("What is your name","Jon");
+		alert("You entered "+name);
+	}
+	else
+		alert("You opted to terminate.");
+	
+}
+</script>
+<body>
+Hello welcome
+<input type="button" value="Go" onClick="display()">
+</body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.deloitte.cms.model.EmployeeDetails" table="hr.EmployeeDetails2" >
+	
+		<id name="employeeId" type="int" column="EID">
+			<generator class="assigned"/>
+		</id>
+		
+		<property name="employeeName" column="EmpName"/>
+		<property name="salary" column="Salary"/>
+		
+		<set name="employeeAddress" cascade="save-update" table="hr.EmployeeAdd">
+		<key column="EID"></key>
+		<many-to-many column="AID" class="com.deloitte.cms.model.Address"></many-to-many>
+		</set>
+		
+</class>
+
+
+<class name="com.deloitte.cms.model.Address" table="hr.Address2" >
+	
+		<id name="aId" type="int" column="AID">
+			<generator class="assigned"/>
+		</id>
+		
+		<property name="city" />
+		<property name="state"/>
+		
+</class>
+	
+</hibernate-mapping>
+
+
+
+<!-- <hibernate-mapping>
+
+<class name="com.deloitte.cms.model.Customer" table="hr.CustomerTypesnew" 
+discriminator-value="MainCustomer">
+	
+		<id name="customerId" type="int" column="CID">
+			<generator class="assigned"/>
+		</id>
+		
+		<discriminator column="CustTypes"></discriminator>
+		<property name="customerName" column="CustName"/>
+		<property name="customerAddress" column="CustAddress"/>
+		<property name="billAmount"/>
+</class>
+		<subclass name="com.deloitte.cms.model.PremierCustomer" 
+		extends="com.deloitte.cms.model.Customer" discriminator-value="PRemium_Cust">
+		<property name="rewardPoints"></property>
+		</subclass>
+		
+	
+</hibernate-mapping> -->

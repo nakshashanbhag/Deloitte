@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<script type="text/javascript">
+function mydisp(action)
+{
+	if (action=="none") 
+	{
+		document.getElementById('rooms').style.display = "block";
+	} 
+	else
+	{
+		document.getElementById('rooms').style.display = "none";
+	}
+
+	var x =document.f1.choice.options[document.f1.choice.selectedIndex].text;
+	
+
+	var nRooms = new Array("single","double");
+	var dRooms = new Array("single","double");
+	
+	var nsPrice = new Array(1000,2000);
+	
+	var y = document.f1.rooms;
+	if(x=="Normal")
+	{
+		y.length = 0;
+		for(i=0;i<nRooms.length;i++)
+		{
+			option = new Option(nRooms[i]);
+			y.options[i] = option;
+      	}
+		
+		for(i=0;i<nsPrice.length;i++)
+		{
+			option = new Option(nsPrice[i]);
+			y.options[i] = option;
+      	}
+   	}
+	if(x=="Deluxe")
+	{
+		y.length = 0;
+		for(i=0;i<dRooms.length;i++)
+		{
+			option = new Option(dRooms[i]);
+			y.options[i] = option;
+      		}
+   	}
+}
+	
+</script>
+</head>
+<body>
+
+
+<center><h1>  Garnet Hotel, Bangalore.</h1></center>
+
+
+<form name="f1">
+
+<center><h2>Select your choice : </h2></center>
+
+<label>Choice:*</label>
+
+<select id="choice" onchange="mydisp('none');">
+      <option>Normal</option>          
+       <option>Deluxe</option>       
+</select>
+
+<br><br>
+<label>Details:*</label><select style="display:none;" id='rooms'></select>
+
+</form>
+
+
+
+
+
+
+
+</body>
+</html>

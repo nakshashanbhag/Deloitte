@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+<class name="com.deloitte.cms.model.Customer" table="hr.CustomerTypesjoin" >
+	
+		<id name="customerId" type="int" column="CID">
+			<generator class="assigned"/>
+		</id>
+		
+		<property name="customerName" column="CustName"/>
+		<property name="customerAddress" column="CustAddress"/>
+		<property name="billAmount"/>
+</class>
+		<joined-subclass name="com.deloitte.cms.model.PremierCustomer" 
+		extends="com.deloitte.cms.model.Customer" table="hr.PremierCust">
+		<key><column name="customerId"></column></key>
+		<property name="rewardPoints"></property>
+		</joined-subclass>
+		
+	
+</hibernate-mapping>
+
+
+
+<!-- <hibernate-mapping>
+
+<class name="com.deloitte.cms.model.Customer" table="hr.CustomerTypesnew" 
+discriminator-value="MainCustomer">
+	
+		<id name="customerId" type="int" column="CID">
+			<generator class="assigned"/>
+		</id>
+		
+		<discriminator column="CustTypes"></discriminator>
+		<property name="customerName" column="CustName"/>
+		<property name="customerAddress" column="CustAddress"/>
+		<property name="billAmount"/>
+</class>
+		<subclass name="com.deloitte.cms.model.PremierCustomer" 
+		extends="com.deloitte.cms.model.Customer" discriminator-value="PRemium_Cust">
+		<property name="rewardPoints"></property>
+		</subclass>
+		
+	
+</hibernate-mapping> -->
